@@ -1,0 +1,49 @@
+.custom-class-form {
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 5%;
+  margin-left: 38%;
+  margin-right: 38%;
+  justify-content: center;
+  background-image: url(../../../assets/image/wallpaper-black.png);
+  background-repeat: no-repeat;
+  background-size: 200%;
+  color: white;
+  border-radius: 10px;
+}
+
+input {
+  color: white;
+  font-size: medium;
+  background-color: black;
+  border-color: aliceblue;
+  border-radius: 5px;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 75%;
+}
+
+label {
+  margin-left: 10%;
+  font-size: larger;
+}
+
+h2 {
+  border-radius: 10px;
+  text-align: center;
+  padding-bottom: 20px;
+
+}
+
+form {
+  height: 100%;
+}
+
+button {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.custom-control {
+  text-align: right;
+  margin-right: 15%;
+}
