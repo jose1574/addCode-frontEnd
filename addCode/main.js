@@ -82,6 +82,10 @@ const server = http.createServer((req, res) => {
     `);
   }
 });
+const hostname = '127.0.0.1';
+const port = 3001;
 app.on('ready', () => {
-  server.listen(3001);
+  server.listen(port, hostname, ()=> {
+    console.log(`servidor corriendo en http://${hostname} el puerto ${port} `);
+  });
 });

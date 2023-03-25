@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ConnectionDataComponent } from './components/connection-data.component';
-import { ConnectionDataService } from './services/connection-data.service';
 
 @NgModule({
   declarations: [ConnectionDataComponent],
@@ -11,7 +10,7 @@ import { ConnectionDataService } from './services/connection-data.service';
     ReactiveFormsModule,
     CommonModule,
   ],
-  providers: [ConnectionDataService],
+  providers: [],
   exports: [],
 })
 export class ConnectionDataModule { }

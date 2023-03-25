@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ConnectionDataService } from '../services/connection-data.service';
 import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-connection-data',
   templateUrl: './connection-data.component.html',
   styleUrls: ['./connection-data.component.css'],
 })
-export class ConnectionDataComponent implements OnInit {
+export class ConnectionDataComponent {
 
-  dataConnectionForm = new FormGroup({
-    host: new FormControl('', [Validators.required]),
-  });
+  dataConnectionForm: FormGroup;
 
-  constructor(private dbService: ConnectionDataService, private http: HttpClient ) {}
 
-  ngOnInit(): void {
 
+  constructor(private http: HttpClient ) {
+
+   this.dataConnectionForm = new FormGroup({
+      host: new FormControl('', [Validators.required]),
+    });
   }
 
   saveHost() {
