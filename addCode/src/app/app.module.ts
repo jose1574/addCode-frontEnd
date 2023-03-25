@@ -1,17 +1,27 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './routes/app-routing.module';
+import { ConnectionDataModule } from './connection-data/connection-data.module';
+
+
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserModule,
+    HttpClientModule,
+    ConnectionDataModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: []
+  exports: [ CommonModule ]
 })
 export class AppModule { }
