@@ -1,0 +1,27 @@
+
+  <div class="col mb-5 custom-content-cards">
+    <div class="card text-start custom-card input-container ">
+      <span class="card-title text-light h1">Login</span>
+      <!-- <div class="custom-label"> -->
+      <label for="password" class="text-light h4">Clave </label>
+
+
+      <!-- </div> -->
+      <input input [type]="showPassword ? 'text' : 'password'" class="form-control text-light bg-dark custom-input" />
+      <p
+        class="toggle-password fasfa-search"
+        [class.fa-eye-slash]="!showPassword"
+        [class.fa-eye]="showPassword"
+        (click)="toggleShowPassword()"
+      >{{showHide}}</p>
+      <div class="custom-buttom-controls">
+        <button type="button" class="btn btn-danger btn-sm">
+          Cancelar
+        </button>
+        <button type="submit" class="btn btn-success btn-sm">
+          Crear registro
+        </button>
+      </div>
+    </div>
+  </div>
+

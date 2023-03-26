@@ -1,0 +1,79 @@
+.custom-card {
+  background-image: url(../../../../assets/image/wallpaper-black-min.png);
+  background-size: cover;
+  margin-top: 10px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  height: auto;
+  width: 400px;
+  border-radius: 10px 10px 20px 20px;
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.2);
+
+}
+
+label {
+  width: 90%;
+}
+
+input {
+  width: 90%;
+}
+
+button {
+  margin: 10px 0 10px 10px;
+}
+
+
+
+span {
+  border-radius: 10px 10px;
+  text-align: center;
+  background-color: rgba(52, 58, 64, 1);
+  color: white;
+  width: 100%;
+}
+
+
+.custom-content-cards {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.custom-buttom-controls {
+  display: flex;
+  justify-content: right;
+  width: 90%;
+}
+
+.custom-input .password-input {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-container input {
+  padding-right: 30px;
+}
+
+.input-container p {
+  position: absolute;
+  top: 60%;
+  right: 30px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: white;
+}
+
+

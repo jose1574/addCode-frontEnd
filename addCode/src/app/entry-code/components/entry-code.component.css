@@ -1,0 +1,25 @@
+.content-input {
+  width: 100%;
+  margin-top: 172px;
+
+}
+
+input {
+  height: 100px;
+  width: 80%;
+  margin: 10px;
+  font-size: 200%;
+}
+
+
+.custom-input {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.content-control {
+  margin-top: 10%;
+  width: 90%;
+  display: flex;
+  justify-content: right;
+}

@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './routes/app-routing.module';
 import { ConnectionDataModule } from './connection-data/connection-data.module';
+import { UserModule } from './users/users.module';
 
 
 
@@ -18,7 +19,8 @@ import { ConnectionDataModule } from './connection-data/connection-data.module';
     AppRoutingModule,
     BrowserModule,
     HttpClientModule,
-    ConnectionDataModule
+    ConnectionDataModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent],

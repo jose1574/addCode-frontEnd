@@ -49,3 +49,14 @@ button {
   margin-right: 15%;
   margin-top: 15%;
 }
+
+
+.custom-content-alert {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.custom-alert {
+  width: auto;
+}

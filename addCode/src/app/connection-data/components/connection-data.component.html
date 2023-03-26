@@ -1,15 +1,23 @@
 <div class="custom-class-form">
   <h2 class="navbar-light bg-dark">Datos de conexión</h2>
-  <form [formGroup]="dataConnectionForm" (ngSubmit)="saveHost()">
+  <form [formGroup]="dataConnectionForm" (ngSubmit)="saveHost()" autocomplete="off" >
 
     <label for="host">Servidor</label>
     <input id="host" type="text" formControlName="host" class="form-control-plaintext"
-      placeholder="Nombre o dirección IP del servidor" />
+      placeholder="Nombre o dirección IP del servidor"
+      (click)="showAlert()"
+       />
 
     <div class="custom-control">
       <button class="btn btn-secondary">Cancelar</button>
-      <button type="submit" class="btn btn-success" [disabled]="!dataConnectionForm.valid">Conectarme</button>
+      <button type="button" class="btn btn-success" [disabled]="!dataConnectionForm.valid" (click)="saveHost()">Conectarme</button>
     </div>
 
   </form>
 </div>
+<div class="custom-content-alert" *ngIf="alertNotConnection">
+  <div class="alert alert-danger custom-alert" role="alert">
+    Error: no se han podido guardar los datos correctamente...!
+  </div>
+</div>
+
