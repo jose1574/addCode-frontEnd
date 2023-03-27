@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+
+import { ConnectionDataService } from '../services/connection-data.service';
 @Component({
   selector: 'app-connection-data',
   templateUrl: './connection-data.component.html',
@@ -11,7 +12,10 @@ export class ConnectionDataComponent {
   dataConnectionForm: FormGroup;
   alertNotConnection: boolean;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(
+    private connectionService: ConnectionDataService,
+    private router: Router
+     ) {
     this.dataConnectionForm = new FormGroup({
       host: new FormControl('', [Validators.required]),
     });
@@ -19,21 +23,22 @@ export class ConnectionDataComponent {
     this.alertNotConnection = false;
   }
 
-  saveHost() {
+   saveHost() {
     const data = this.dataConnectionForm.value.host;
-    const result = this.http.post('http://localhost:3002', data).subscribe({
-      next: (Response) => {
-        console.log('esta es la respuesta del servidor: ', Response);
-        this.router.navigateByUrl('users');
-      },
-      error: (error) => {
-        this.alertNotConnection = true;
-        console.error('error devuelo del servidor: ', error);
-      },
-    });
-    return result;
-  }
 
+    return  this.connectionService.saveHost(data).subscribe({
+     next: (data) => {
+        console.log('se guardaron correctamente estos datos: ', data);
+        this.router.navigateByUrl('users');
+        data;
+      },
+      error: error => {
+        console.error('no se pudo guardar la dirección del host', error);
+        this.alertNotConnection= true;
+        error;
+      }
+    });
+  }
   showAlert() {
     this.alertNotConnection = false;
   }
