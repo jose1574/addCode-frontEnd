@@ -1,9 +1,9 @@
 
 <div class="row row-cols-md-4">
   <div class="col mb-5 custom-content-cards" *ngFor="let user of users | paginate: { itemsPerPage: 8, currentPage: page }" >
-    <a routerLink="./" (click)="authenticateUser(user.code)">
+    <a routerLink="./">
       <div class="card text-start custom-card">
-        <h4 class="card-title">{{user.name}}</h4>
+        <h4 class="card-title">{{user.description}}</h4>
       <img class="card-img-top" src="../../../assets/image/user.jpeg" alt="Title">
     </div>
     </a>

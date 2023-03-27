@@ -5,6 +5,7 @@ import { UsersComponent } from './components/users-components/users.component';
 
 import { RouterModule } from '@angular/router';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { UsersService } from './services/users.service';
 
 
 
@@ -17,6 +18,7 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     CommonModule,
     NgxPaginationModule,
     RouterModule
-  ]
+  ],
+  providers: [UsersService]
 })
 export class UserModule { }

@@ -1,32 +1,23 @@
 import { Injectable } from '@angular/core';
-import { usersModel } from './users-model/user.model';
-
-
+import { HttpClient } from '@angular/common/http';
+import { tap, throwError, Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { UserDto } from '../dtos/user.dto';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsersService {
+  /*contenedor para usuarios devueltos de la consulta a la tabla
+users de la base de datos*/
 
-  private user;
+  users: any;
 
-  constructor() {
-    this.user = usersModel;
-   }
+  // private user;
 
-  getUsers() {
-    return this.user;
+  constructor(private http: HttpClient) {}
+
+  getUsers(): Observable<any> {
+   return this.http.get<UserDto[]>('http://localhost:3000/users')
   }
-
-
-  authenticateUser(users: UserDto[], code: number, password: string): boolean {
-    for (let user of users) {
-        if (user.code === code && user.password === password) {
-            return true;
-        }
-    }
-    return false;
-}
-
 }

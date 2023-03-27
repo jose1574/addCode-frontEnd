@@ -39,7 +39,6 @@ export class ConnectionDataComponent {
       }
     });
   }
-  showAlert() {
-    this.alertNotConnection = false;
-  }
+  showAlert() { this.alertNotConnection = false; }
 }
+
