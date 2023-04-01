@@ -1,20 +1,30 @@
-
 <div class="row row-cols-md-4">
-  <div class="col mb-5 custom-content-cards" *ngFor="let user of users | paginate: { itemsPerPage: 8, currentPage: page }">
-    <a routerLink="/userform/{{user.code}}/{{user.description}}">
+  <div
+    class="col mb-5 custom-content-cards"
+    *ngFor="
+      let user of users | paginate : { itemsPerPage: 8, currentPage: page }
+    "
+  >
+    <a routerLink="/userform/{{ user.code }}/{{ user.description }}">
       <div class="card text-start custom-card">
-        <h4 class="card-title">{{user.description}}</h4>
-    <img class="card-img-top" src="../../../../assets/image/user.jpeg" alt="Title">
-    </div>
+        <div class="user-name">
+          <h4 class="card-title">{{ user.description }}</h4>
+        </div>
+        <img
+          class="card-img-top"
+          src="../../../../assets/image/user.jpeg"
+          alt="Title"
+        />
+      </div>
     </a>
-
   </div>
 </div>
 <div *ngIf="users.length > 8" class="custom-controls-pagination">
   <pagination-controls
-  previousLabel="Anterior"
-  nextLabel="Siguiente"
-  [autoHide]="true"
-  (pageChange)="page = $event">
- </pagination-controls>
+    previousLabel="Anterior"
+    nextLabel="Siguiente"
+    [autoHide]="true"
+    (pageChange)="page = $event"
+  >
+  </pagination-controls>
 </div>

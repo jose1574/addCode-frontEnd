@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { throwError, filter, tap, map} from 'rxjs';
+import { throwError, filter, tap, map } from 'rxjs';
 
 import { UserDto } from '../../dtos/user.dto';
 import { UsersService } from '../../services/users.service';
@@ -24,30 +24,15 @@ export class UsersComponent implements OnInit {
   getUsers() {
     let users$ = this.userServices
       .findUsers()
-      .pipe(
-        map(users => users.filter((user: UserDto) => user.code !== 0))
-        );
+      .pipe(map((users) => users.filter((user: UserDto) => user.code !== 0)));
 
     users$.subscribe({
       next: (users) => {
-        this.users = users
+        this.users = users;
       },
       error: (error) => {
         throwError(() => new error('error al buscar los usuarios'));
       },
     });
-    //   this.userServices.findUsers().subscribe({
-    //     next: (users) => {
-    //       users = users.filter((item: any) => {
-    //           item !==  0
-    //       })
-
-    //       this.users = users
-
-    //     },
-    //     error: (error) => {
-    //       throwError(() => new error('error al buscar los usuarios'));
-    //     },
-    //   });
   }
 }
