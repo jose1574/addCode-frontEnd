@@ -4,7 +4,7 @@ import { RouterModule, Routes, PreloadAllModules  } from '@angular/router';
 
 import { ConnectionDataComponent } from '../connection-data/components/connection-data.component';
 import { UsersComponent } from '../users/components/users-components/users.component';
-import { UserFormComponent } from '../users/components/user-form/user-form.component';
+import { UserFormComponent } from '../users/components/login-user/login-user.component';
 import { EntryCodeComponent } from '../entry-code/components/entry-code.component';
 
 
@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'users', component: UsersComponent },
   {path: 'users/:id', component: UsersComponent },
   {path: 'userform', component: UserFormComponent},
-  {path: 'userform/:id', component: UserFormComponent},
+  {path: 'userform/:id/:name', component: UserFormComponent},
   {path: 'entrycode', component: EntryCodeComponent}
 
 ];

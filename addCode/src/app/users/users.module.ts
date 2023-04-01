@@ -4,8 +4,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { UsersComponent } from './components/users-components/users.component';
 
 import { RouterModule } from '@angular/router';
-import { UserFormComponent } from './components/user-form/user-form.component';
+import { UserFormComponent } from './components/login-user/login-user.component';
 import { UsersService } from './services/users.service';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +18,8 @@ import { UsersService } from './services/users.service';
   imports: [
     CommonModule,
     NgxPaginationModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   providers: [UsersService]
 })

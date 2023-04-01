@@ -1,5 +1,11 @@
 const { app, BrowserWindow } = require("electron");
 const server = require('./local-server.js')
+const express = require('express');
+const api = express();
+const path = require('path');
+
+const assetsFolder = path.join(__dirname, 'dist/assets');
+api.use(express.static(assetsFolder));
 
 server;
 let appWin;
@@ -16,8 +22,10 @@ createWindow = () => {
     movable: true
   })
 
+
   appWin.maximize();
   appWin.show()
+  appWin.openDevTools()
 
   appWin.loadURL(`file://${__dirname}/dist/index.html`);
 
@@ -26,7 +34,6 @@ createWindow = () => {
     appWin = null;
   });
 }
-
 app.on("ready", createWindow);
 
 app.on("window-all-closed", () => {

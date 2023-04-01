@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { throwError} from'rxjs';
+import { throwError, filter, tap, map} from 'rxjs';
 
 import { UserDto } from '../../dtos/user.dto';
 import { UsersService } from '../../services/users.service';
@@ -8,25 +7,47 @@ import { UsersService } from '../../services/users.service';
 @Component({
   selector: 'app-users',
   templateUrl: '../users-components/users.component.html',
-  styleUrls: ['../users-components/users.component.css']
+  styleUrls: ['../users-components/users.component.css'],
 })
 export class UsersComponent implements OnInit {
   page: number = 1;
-  users: UserDto[];
+  users!: UserDto[];
 
-  constructor(private userServices: UsersService, private route: ActivatedRoute) {
-    this.users=[]
+  constructor(private userServices: UsersService) {
+    this.users = [];
   }
 
-
-  ngOnInit() {
+  async ngOnInit() {
     this.getUsers();
   }
 
   getUsers() {
-    this.userServices.getUsers().subscribe({
-      next: (users) => {this.users = users},
-      error: (error: any) => {throwError(() => new error('error al buscar los usuarios'))}
-    })
+    let users$ = this.userServices
+      .findUsers()
+      .pipe(
+        map(users => users.filter((user: UserDto) => user.code !== 0))
+        );
+
+    users$.subscribe({
+      next: (users) => {
+        this.users = users
+      },
+      error: (error) => {
+        throwError(() => new error('error al buscar los usuarios'));
+      },
+    });
+    //   this.userServices.findUsers().subscribe({
+    //     next: (users) => {
+    //       users = users.filter((item: any) => {
+    //           item !==  0
+    //       })
+
+    //       this.users = users
+
+    //     },
+    //     error: (error) => {
+    //       throwError(() => new error('error al buscar los usuarios'));
+    //     },
+    //   });
   }
 }

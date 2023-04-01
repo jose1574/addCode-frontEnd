@@ -1,23 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap, throwError, Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { UserDto } from '../dtos/user.dto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  /*contenedor para usuarios devueltos de la consulta a la tabla
-users de la base de datos*/
 
   users: any;
 
-  // private user;
-
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<any> {
+  findUsers(): Observable<any> {
    return this.http.get<UserDto[]>('http://localhost:3000/users')
+  }
+
+  async findOneUser(id: string) {
+    return await this.http.get<UserDto[]>(`http://localhost:3000/users/${id}`)
+  }
+
+  loginUser(username: string, password: string) {
+    return this.http.post('http://localhost:3000/users/login', { username, password })
   }
 }

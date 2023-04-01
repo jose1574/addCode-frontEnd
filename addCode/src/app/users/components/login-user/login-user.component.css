@@ -69,11 +69,18 @@ span {
 
 .input-container p {
   position: absolute;
-  top: 60%;
+  top: 68%;
   right: 30px;
   transform: translateY(-50%);
   cursor: pointer;
   color: white;
 }
 
+.custom-content-alert {
+  display: flex;
+  justify-content: center;
+}
 
+.icon-user {
+  background-image: url('../../../../assets//icons/gear.svg');
+}
