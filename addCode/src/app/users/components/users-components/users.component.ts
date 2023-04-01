@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { throwError, filter, tap, map } from 'rxjs';
+import { throwError, map, Observable } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { UserDto } from '../../dtos/user.dto';
 import { UsersService } from '../../services/users.service';
@@ -12,8 +13,11 @@ import { UsersService } from '../../services/users.service';
 export class UsersComponent implements OnInit {
   page: number = 1;
   users!: UserDto[];
-
-  constructor(private userServices: UsersService) {
+  imagen: any;
+  constructor(
+    private userServices: UsersService,
+    private sanitizer: DomSanitizer
+  ) {
     this.users = [];
   }
 
@@ -28,11 +32,24 @@ export class UsersComponent implements OnInit {
 
     users$.subscribe({
       next: (users) => {
-        this.users = users;
+        let newListUsers: UserDto[] = [];
+        users.map(async (user: UserDto) => {
+          user.image = this.getImage(user.image.data);
+          newListUsers.push(user);
+        });
+        this.users = newListUsers;
+        console.log(this.users);
       },
       error: (error) => {
         throwError(() => new error('error al buscar los usuarios'));
       },
     });
+  }
+
+  getImage(image: any) {
+    let uint8Array = new Uint8Array(image);
+    let blob = new Blob([uint8Array], { type: 'image/png' });
+    const objectURL = URL.createObjectURL(blob);
+    return this.sanitizer.bypassSecurityTrustUrl(objectURL);
   }
 }
