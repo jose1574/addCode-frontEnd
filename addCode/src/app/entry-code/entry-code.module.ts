@@ -19,6 +19,6 @@ import { EntryCodeService } from './services/entry-code.service';
     FormsModule,
     RouterModule
   ],
-  providers: [EntryCodeService, EntryCodeComponent]
+  providers: [EntryCodeService]
 })
 export class EntryCodeModule { }

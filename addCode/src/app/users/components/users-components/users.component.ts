@@ -1,7 +1,6 @@
-import { Component, Host, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { throwError, map } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
-import { HttpClient } from '@angular/common/http';
 
 import { UserDto } from '../../dtos/user.dto';
 import { UsersService } from '../../services/users.service';
@@ -12,28 +11,22 @@ import { UsersService } from '../../services/users.service';
   styleUrls: ['../users-components/users.component.css'],
 })
 export class UsersComponent implements OnInit {
-
   page: number = 1;
   users!: UserDto[];
-  apiServerLocal!: any
 
   constructor(
-    private http: HttpClient,
     private userServices: UsersService,
     private sanitizer: DomSanitizer
   ) {
     this.users = [];
 
     this.userServices.getNameHost().subscribe({
-      next: () => this.getUsers()
-
-    })
-    // this.getUsers()
+      next: () => this.getUsers(),
+      error: (err) => console.error(err),
+    });
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   getUsers() {
     let users$ = this.userServices

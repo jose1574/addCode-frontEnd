@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CodeDto } from '../dtos/code.dto';
 import { EntryCodeService } from '../services/entry-code.service';
 import { switchMap } from 'rxjs/operators';
 @Component({
@@ -8,10 +7,20 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./entry-code.component.css'],
 })
 export class EntryCodeComponent {
-  inputUser: any;
-  result: any;
 
-  constructor(private entryCodeService: EntryCodeService) {}
+  product = ''
+  inputUser: any;
+
+  constructor(
+    private entryCodeService: EntryCodeService
+    ) {}
+
+    showProduct(nameProduct: string) {
+      this.product = nameProduct
+      setTimeout(() => {
+        this.product = ''
+      }, 5000)
+    }
 
   get codeOfProduct() {
     let code = this.inputUser.slice(2, -6);
@@ -22,13 +31,15 @@ export class EntryCodeComponent {
   saveCode() {
     return this.entryCodeService.findOneProduct(this.codeOfProduct).pipe(
       switchMap((product) => {
+        this.showProduct(product.description)
         console.log('este es el producto que estoy recibiendo: ', product)
+
         return this.entryCodeService.saveCode(product.code, this.inputUser);
       })
     ).subscribe({
-      next: (value) => {
-        console.log('los datos se guardaron correctamente ');
-      },
+      next: () => {
+        this.inputUser= ''
+        console.log('los datos se guardaron correctamente ')},
       error: err => console.error('ocurrió un error al intentar guardar los datos', err)
     })
   }

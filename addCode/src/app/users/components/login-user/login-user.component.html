@@ -13,6 +13,7 @@
       input
       [type]="showPassword ? 'text' : 'password'"
       class="form-control text-light bg-dark custom-input"
+      (keydown.enter)="loginUser(code, password)"
       [(ngModel)]="password"
     />
 

@@ -1,7 +1,23 @@
-.content-input {
-  width: 100%;
-  margin-top: 172px;
+.custom-content-alert {
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  margin-bottom: 10px;
+}
 
+.custom-alert {
+  height: 100px;
+  width: 80%;
+  margin: 10px;
+  font-size: 200%;
+  text-align: center;
+}
+
+.content-input {
+  display: block;
+  justify-content: center;
+  width: 100%;
+  margin-top: 102px;
 }
 
 input {
@@ -10,7 +26,6 @@ input {
   margin: 10px;
   font-size: 200%;
 }
-
 
 .custom-input {
   width: 100%;

@@ -10,7 +10,7 @@ import { EntryCodeComponent } from '../entry-code/components/entry-code.componen
 
 
 const routes: Routes = [
-  {path: '', component: ConnectionDataComponent },
+  {path: '',component: ConnectionDataComponent },
   {path: 'users', component: UsersComponent },
   {path: 'users/:id', component: UsersComponent },
   {path: 'userform', component: UserFormComponent},

@@ -1,5 +1,13 @@
 <div class="content-input">
-  <h1>esto es: {{ inputUser }}</h1>
+  <div class="custom-content-alert">
+    <div
+      class="alert alert-success custom-alert"
+      role="alert"
+      *ngIf="product !== ''"
+    >
+      <h2>{{ product }}</h2>
+    </div>
+  </div>
 
   <div class="custom-input">
     <input
@@ -12,13 +20,10 @@
   </div>
 
   <div class="content-control">
-    <!-- <a routerLink="./users">
-    <button class="btn btn-dark btn-lg">Salir</button>
-    </a> -->
     <a routerLink="/users">
       <button type="button" class="btn btn-dark btn-lg">salir</button>
     </a>
   </div>
 </div>
 
-<!-- 2700550005507 -->
+<!-- 2700101005507 -->
