@@ -7,19 +7,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class EntryCodeService {
-  constructor(private http: HttpClient) {}
-
-  //retorna un producto con cualquier de sus códigos
-  // async findOneProduct(code: string): Observable<any>  {
-  //   return this.http.get(`http://localhost:3000/products-codes/${code}`).subscribe({
-  //     next: value => {
-  //       console.log('esto es lo que tengo desde findOnde: ', value);
-  //       return value
-
-  //     },
-  //     error: err => err,
-  //   })
-  // }
+  apiServerLocal!: string;
+  constructor(private http: HttpClient) {
+    this.http.get<string>('http://localhost:3002').subscribe({
+      next: (host) => {
+        host = JSON.stringify(host)
+        return this.apiServerLocal = host;
+      }
+    })
+  }
 
   findOneProduct(id: string): Observable<any> {
     return this.http.get<CodeDto[]>(

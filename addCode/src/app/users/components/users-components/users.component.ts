@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { throwError, map, Observable } from 'rxjs';
+import { Component, Host, OnInit } from '@angular/core';
+import { throwError, map } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
+import { HttpClient } from '@angular/common/http';
 
 import { UserDto } from '../../dtos/user.dto';
 import { UsersService } from '../../services/users.service';
@@ -11,18 +12,27 @@ import { UsersService } from '../../services/users.service';
   styleUrls: ['../users-components/users.component.css'],
 })
 export class UsersComponent implements OnInit {
+
   page: number = 1;
   users!: UserDto[];
-  imagen: any;
+  apiServerLocal!: any
+
   constructor(
+    private http: HttpClient,
     private userServices: UsersService,
     private sanitizer: DomSanitizer
   ) {
     this.users = [];
+
+    this.userServices.getNameHost().subscribe({
+      next: () => this.getUsers()
+
+    })
+    // this.getUsers()
   }
 
-  async ngOnInit() {
-    this.getUsers();
+  ngOnInit() {
+
   }
 
   getUsers() {
@@ -38,7 +48,6 @@ export class UsersComponent implements OnInit {
           newListUsers.push(user);
         });
         this.users = newListUsers;
-        console.log(this.users);
       },
       error: (error) => {
         throwError(() => new error('error al buscar los usuarios'));

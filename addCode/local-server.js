@@ -46,7 +46,9 @@ app.get('/', async (req, res) => {
   try {
     // Leer el contenido del archivo y enviarlo como respuesta
     const data = await fs.promises.readFile(filePath, 'utf8');
-    res.send(data);
+    res.statusCode = 200;
+      res.send(JSON.stringify(data))
+      res.end();
   } catch (err) {
     // Manejar errores
     console.error(err);
