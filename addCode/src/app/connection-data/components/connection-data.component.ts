@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+
 import { ConnectionDataService } from '../services/connection-data.service';
 @Component({
   selector: 'app-connection-data',
@@ -29,7 +30,7 @@ export class ConnectionDataComponent {
     return  this.connectionService.saveHost(data).subscribe({
      next: (data) => {
         console.log('se guardaron correctamente estos datos: ', data);
-        this.router.navigateByUrl('users');
+        this.router.navigateByUrl('/');
         data;
       },
       error: error => {

@@ -7,6 +7,13 @@
     >
       <h2>{{ product }}</h2>
     </div>
+    <div
+    class="alert alert-danger custom-alert"
+    role="alert"
+    *ngIf="alert == true"
+  >
+    <h2>Este producto no se encuentra en la base de datos.</h2>
+  </div>
   </div>
 
   <div class="custom-input">
@@ -18,9 +25,11 @@
       (keydown.enter)="saveCode()"
     />
   </div>
+  <div class="custom-content-alert">
+</div>
 
   <div class="content-control">
-    <a routerLink="/users">
+    <a routerLink="">
       <button type="button" class="btn btn-dark btn-lg">salir</button>
     </a>
   </div>

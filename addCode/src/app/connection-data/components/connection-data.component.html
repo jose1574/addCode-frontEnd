@@ -9,7 +9,9 @@
        />
 
     <div class="custom-control">
+      <a routerLink="/">
       <button class="btn btn-secondary">Cancelar</button>
+      </a>
       <button type="button" class="btn btn-success" [disabled]="!dataConnectionForm.valid" (click)="saveHost()">Conectarme</button>
     </div>
 

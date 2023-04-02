@@ -3,29 +3,31 @@ const server = require('./local-server.js')
 const express = require('express');
 const api = express();
 const path = require('path');
+const url = require('url')
 
 const assetsFolder = path.join(__dirname, 'dist/assets');
 api.use(express.static(assetsFolder));
 
 server;
 let appWin;
-
 createWindow = () => {
   appWin = new BrowserWindow({
+    frame: true,
     title: "AddCode",
     transparent: true,
-    width: 800,
-    height: 600,
     minWidth: 400,
     minHeight: 300,
-    resizable: true,
-    movable: true
+    movable: true,
+    icon: path.join(__dirname, 'dist/assets/icons/logo.ico'),
   })
 
 
-  appWin.maximize();
+  appWin.setMaximizable(true)
+  appWin.setFullScreenable(true)
+  appWin.setResizable(true)
+  appWin.setMinimumSize(800, 600)
+  appWin.maximize(true)
   appWin.show()
-  appWin.openDevTools()
 
   appWin.loadURL(`file://${__dirname}/dist/index.html`);
 
